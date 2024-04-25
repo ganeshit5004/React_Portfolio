@@ -2,14 +2,18 @@ import React, { useState } from 'react'
 
 
 const Contact = ({sendEmail}) => {
-  
+   
+
     const [value,setvalue] = useState('')
     const [mail,setmail] = useState('')
     const [message,setmessage] = useState('')
+    const empty = () =>{
+        setvalue('')
+        setmail('')
+        setmessage(' ')
+    }
     const valueChange = () =>{
-            setvalue('')
-            setmail('')
-            setmessage(' ')
+        setTimeout(()=>{empty()},1000)
     }
    return (
     <div name='Contact' className=' h-full w-full bg-gradient-to-b from-black to-gray-800 text-white'>
@@ -25,8 +29,7 @@ const Contact = ({sendEmail}) => {
                     <input type="text" name='mail' placeholder='Enter your mail' required
                     className='my-4 p-2 bg-transparent border-2  rounded-md text-white focus:outline-none'  value={mail} onChange={(e)=>setmail(e.target.value) } />
                     <textarea name="message" placeholder='Enter the message' id="" cols="30" rows="10" className='p-2 bg-transparent border-2 rounded-md text-white focus:outline-none' value={message} onChange={(e)=>setmessage(e.target.value)} required></textarea>
-                    <button className={'text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex itexm-center rounded-md hover:scale-110 duration-300 '} onClick={()=>valueChange()}>Let's talk</button>
-                   
+                   <button className={'text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex itexm-center rounded-md hover:scale-110 duration-300 '} onClick={()=>valueChange()} >Let's talk</button>
                 </form>
             </div>
          </div>
