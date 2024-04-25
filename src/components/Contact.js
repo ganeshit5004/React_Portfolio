@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TiTickOutline } from "react-icons/ti";
+
 
 const Contact = ({sendEmail}) => {
   
