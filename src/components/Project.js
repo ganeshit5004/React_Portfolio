@@ -30,7 +30,7 @@ const Project = () => {
           <h3 className="text-xl text-white mt-2">Static Weather Dashboard</h3>
           <h6 className="text-gray-400">Programming language: HTML, CSS, and JavaScript</h6>
         </div>
-        <div className="w-full sm:w-1/2 p-4 h-20 ">
+        <div className="w-full sm:w-1/2 p-4">
         <a href="../" target="_blank" rel="noopener noreferrer">
           <img src={crudapp} className="w-full  hover:scale-105  duration-300" alt='profile'  sizes={30} />
           </a>
