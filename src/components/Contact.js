@@ -1,16 +1,24 @@
 import React, { useState } from 'react'
+import { TiTickOutline } from "react-icons/ti";
 
 
 const Contact = ({sendEmail}) => {
-   
-
+   const a = ['hidden', 'visible']
+   const b = ['visible','hidden']
+    const [able,setable] = useState(1) 
     const [value,setvalue] = useState('')
     const [mail,setmail] = useState('')
     const [message,setmessage] = useState('')
     const empty = () =>{
-        setvalue('')
-        setmail('')
-        setmessage(' ')
+        if(value===''||mail===''||message===''){
+            setable(1)
+        }
+        else{
+            setable(0)
+            setvalue('')
+            setmail('')
+            setmessage(' ')
+        }
     }
     const valueChange = () =>{
         setTimeout(()=>{empty()},1000)
@@ -29,7 +37,8 @@ const Contact = ({sendEmail}) => {
                     <input type="text" name='mail' placeholder='Enter your mail' required
                     className='my-4 p-2 bg-transparent border-2  rounded-md text-white focus:outline-none'  value={mail} onChange={(e)=>setmail(e.target.value) } />
                     <textarea name="message" placeholder='Enter the message' id="" cols="30" rows="10" className='p-2 bg-transparent border-2 rounded-md text-white focus:outline-none' value={message} onChange={(e)=>setmessage(e.target.value)} required></textarea>
-                   <button className={'text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex itexm-center rounded-md hover:scale-110 duration-300 '} onClick={()=>valueChange()} >Let's talk</button>
+                   <button className={'text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex itexm-center rounded-md hover:scale-110 duration-300 '+a[able]} onClick={()=>valueChange()} >Let's talk</button>
+                   <TiTickOutline  className={'my-8 mx-auto h-12 w-12 rounded-full bg-green-400 '+b[able] }/>
                 </form>
             </div>
          </div>
