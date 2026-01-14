@@ -66,7 +66,7 @@ const AiAssistant = ({ open, setOpen }) => {
       )}
 
       <div
-        className={`fixed top-0 right-0 h-screen w-[30%] bg-[#0f0f0f] border-l border-white/10 z-40 transform ${
+        className={`fixed top-0 right-0 h-screen w-1/4 bg-[#0f0f0f] border-l border-white/10 z-40 transform ${
           open ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 flex flex-col`}
       >

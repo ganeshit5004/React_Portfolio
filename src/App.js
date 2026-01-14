@@ -20,7 +20,7 @@ function App() {
      <div className="flex transition-all duration-300">
       
       {/* Portfolio Content */}
-      <div className={`${chatOpen ? "w-3/4" : "w-full"} transition-all duration-300`}>
+      <div className={` w-full transition-all duration-300`}>
         <NavBar />
         <Home />
         <About />
