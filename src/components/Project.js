@@ -6,7 +6,7 @@ import todo from '../assets/todo.png'
 
 const Project = () => {
   return (
-    <div name='Project' className="h-full w-full px-20 py-20 bg-gradient-to-b from-black to-gray-800" id="photos">
+    <div name='Project' className="sm:h-1/3 w-full px-20 py-20 bg-gradient-to-b from-black to-gray-800" id="photos">
       <h2 className="text-white py-2 text-4xl font-bold border-b-4 border-gray-500 inline my-5">Project</h2>
 
 

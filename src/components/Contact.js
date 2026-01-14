@@ -1,53 +1,92 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { TiTickOutline } from "react-icons/ti";
 
+const Contact = ({ sendEmail }) => {
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-const Contact = ({sendEmail}) => {
-   const a = ['hidden', 'visible']
-   const b = ['visible','hidden']
-    const [able,setable] = useState(1) 
-    const [value,setvalue] = useState('')
-    const [mail,setmail] = useState('')
-    const [message,setmessage] = useState('')
-    const empty = () =>{
-        if(value===''||mail===''||message===''){
-            setable(1)
-        }
-        else{
-            setable(0)
-            setvalue('')
-            setmail('')
-            setmessage(' ')
-        }
-    }
-    const valueChange = () =>{
-        setTimeout(()=>{empty()},1000)
-    }
-   return (
-    <div name='Contact' className=' h-full w-full bg-gradient-to-b from-black to-gray-800 text-white'>
-        <div  className='flex flex-col p-4 justify-center  max-w-screen-lg mx-20 h-full'>
-            <div className='pb-8'>
-                <p className='text-4xl font-bold inline border-b-4 border-gray-500'>Contact</p>
-                <p  className='py-6'> Submit the form below to get in touch with me</p>
-            </div>
-            <div className='flex flex-col justify-center items-center'>
-                <form  className='flex flex-col w-full md:w-1/2' onSubmit={sendEmail}>
-                    <input type="text" name='name' placeholder='Enter your name' required 
-                    className='p-2 bg-transparent border-2  rounded-md text-white focus:outline-none' value={value} onChange={(e)=>setvalue(e.target.value) } />
-                    <input type="text" name='mail' placeholder='Enter your mail' required
-                    className='my-4 p-2 bg-transparent border-2  rounded-md text-white focus:outline-none'  value={mail} onChange={(e)=>setmail(e.target.value) } />
-                    <textarea name="message" placeholder='Enter the message' id="" cols="30" rows="10" className='p-2 bg-transparent border-2 rounded-md text-white focus:outline-none' value={message} onChange={(e)=>setmessage(e.target.value)} required></textarea>
-                   <button className={'text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex itexm-center rounded-md hover:scale-110 duration-300 '+a[able]} onClick={()=>valueChange()} >Let's talk</button>
-                   <TiTickOutline  className={'my-8 mx-auto h-12 w-12 rounded-full bg-green-400 '+b[able] }/>
-                </form>
-            </div>
-         </div>
-        <div>
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    sendEmail(e);
+    setSent(true);
+    setTimeout(() => setSent(false), 4000);
+    setForm({ name: "", email: "", message: "" });
+  };
+
+  return (
+    <div
+      name="Contact"
+      className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white flex items-center"
+    >
+      <div className="max-w-screen-lg mx-auto px-6 w-full">
+        <h2 className="text-4xl font-bold border-b-4 border-cyan-500 inline">
+          Get In Touch
+        </h2>
+        <p className="text-gray-400 mt-4">
+          Have a project or want to collaborate? Drop me a message.
+        </p>
+
+        <div className="mt-10 grid md:grid-cols-2 gap-10 items-center">
+          {/* Info Section */}
+          <div className="text-gray-400 space-y-4">
+            <p><span className="text-cyan-400">Email:</span> ganeshit5004@gmail.com</p>
+            <p><span className="text-cyan-400">Location:</span> Chennai, India</p>
+            <p><span className="text-cyan-400">Role:</span> Python Backend & AI Engineer</p>
+          </div>
+
+          {/* Form Section */}
+          <form
+            onSubmit={handleSubmit}
+            className="backdrop-blur-lg bg-white/5 border border-white/10 p-8 rounded-2xl shadow-lg"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={form.name}
+              onChange={handleChange}
+              className="w-full mb-4 p-3 bg-black/30 border border-white/10 rounded-md focus:outline-none"
+              required
+            />
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={form.email}
+              onChange={handleChange}
+              className="w-full mb-4 p-3 bg-black/30 border border-white/10 rounded-md focus:outline-none"
+              required
+            />
+
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              rows="5"
+              value={form.message}
+              onChange={handleChange}
+              className="w-full mb-6 p-3 bg-black/30 border border-white/10 rounded-md focus:outline-none"
+              required
+            />
+
+            {!sent ? (
+              <button className="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-md hover:scale-105 duration-300">
+                Send Message
+              </button>
+            ) : (
+              <div className="flex justify-center">
+                <TiTickOutline className="text-green-400 w-12 h-12" />
+              </div>
+            )}
+          </form>
         </div>
+      </div>
     </div>
-    
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

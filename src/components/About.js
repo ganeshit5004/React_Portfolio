@@ -1,16 +1,18 @@
-import React from 'react'
+const About = () => (
+  <div name="About" className="py-20 bg-black text-white w-full">
+    <div className="max-w-screen-xl mx-auto">
+      <h2 className="text-4xl font-bold border-b-4 border-cyan-500 inline">
+        About Me
+      </h2>
 
-const About = () => {
-  return (
-    <div name='About' className='h-full w-full px-20 py-20  bg-gradient-to-b from-gray-800 to-black'>
-        <div className='my-6'> 
-            <h1 className='font-bold text-white text-4xl border-b-4 border-gray-500 inline'>About</h1>
-        </div>
-        <p className='text-justify text-gray-500'>
-        Hello and welcome! I'm Ganesh S, a budding software developer fueled by a passion for crafting innovative solutions and diving into the endless possibilities of code. As a fresher in the realm of software development, I bring an insatiable curiosity and a hunger to learn, grow, and contribute to impactful projects. I thrive in dynamic environments, relishing challenges that push the boundaries of my knowledge and skills. What sets me apart is not just my technical prowess, but also my eagerness to adapt, collaborate, and embrace new technologies and methodologies that drive the ever-evolving landscape of software development.
-        </p>
+      <p className="text-gray-400 mt-6 leading-relaxed">
+        I am Ganesh S, Software Developer & Data Analyst at Populus Empowerment Network.
+        I work on building scalable FastAPI backend services, SQL Server data systems,
+        and AI-powered pipelines including data preprocessing, ML model deployment and
+        business intelligence workflows.
+      </p>
     </div>
-  )
-}
+  </div>
+);
 
-export default About
+export default About;
