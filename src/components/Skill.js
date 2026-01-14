@@ -74,7 +74,7 @@ const Skill = () => {
             <div className='w-2/3 grid grid-col-2  gap-20 text-center sm:grid-cols-3 px-12 sm:px-0 mx-auto my-10 '>
                 {skill.map((a)=>(
                     <div  key={a.id} className={'shadow-md hover:scale-105 duration-300 rounded-lg '+a.style}  >
-                    <img src={a.name} alt="profile" className='w-20 h-20 mx-auto text-white bg-transparent' />
+                    <img src={a.name} alt="profile" className='w-20 h-20 mx-auto text-white bg-transparent aspect-ratio: 1/1' />
                     <p className='mt-8'>{a.skill}</p>
                 </div>
                 ))}

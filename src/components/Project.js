@@ -14,7 +14,7 @@ const Project = () => {
       <div className="flex flex-wrap my-4 py-10">
         <div className="w-full sm:w-1/2 p-4">
            <a href="../" target="_blank" rel="noopener noreferrer">
-              <img src={food} className="w-full  hover:scale-105 duration-300" alt='profile'/>
+              <img src={food} className="w-full  hover:scale-105 duration-300 aspect-ratio: 1 / 1" alt='profile'/>
           </a>
           
 

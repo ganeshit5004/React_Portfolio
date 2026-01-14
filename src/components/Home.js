@@ -8,7 +8,7 @@ const Home = () => {
     <div name = 'Home' className='w-full bg-gradient-to-b from-black to-gray-800 via-black py-10 md:py-5'  >
         <div className='max-w-screen-lg mx-auto  py-10 flex flex-col items-center md:flex-row justify-center h-full px-4 '>
             <div className='flex  flex-col justify-center h-full '>
-                <h2 className='text-5xl  text-white sm:text-7xl font-bold'>I'm a Front end Developer</h2>
+                <h2 className='text-5xl  text-white sm:text-7xl font-bold'>I'm a Software Developer</h2>
                 <p className='text-gray-500 py-4 max-w-md text-justify'>
                     As a budding software developer, I'm driven by a passion for crafting innovative solutions and exploring the vast possibilities of code. I eagerly embrace new technologies, thrive in dynamic environments, and am committed to continuous learning to contribute meaningfully to impactful projects in the field of software development.
                 </p>
