@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaRobot, FaTimes, FaPaperPlane } from "react-icons/fa";
-import axios from "axios";
 
-const API_URL = "https://ai-chatbot-gnur.onrender.com/api/v1/chat";
+const STREAM_API_URL = "http://localhost:8000/api/v1/chat-stream";
+
 
 const AiAssistant = ({ open, setOpen }) => {
   const [input, setInput] = useState("");
@@ -34,25 +34,41 @@ const AiAssistant = ({ open, setOpen }) => {
   };
 
   const sendMessage = async () => {
-    if (!input.trim()) return;
+  if (!input.trim()) return;
 
-    const userMsg = { from: "user", text: input };
-    const updated = [...messages, userMsg];
-    setMessages(updated);
-    setInput("");
-    sessionStorage.setItem("chat_history", JSON.stringify(updated));
+  const userMsg = { from: "user", text: input };
+  const updated = [...messages, userMsg];
+  setMessages(updated);
+  setInput("");
+  sessionStorage.setItem("chat_history", JSON.stringify(updated));
 
-    const res = await axios.post(API_URL, {
-      message: input,
-      chain_id: chainId,
-      new_chat: false
+  const response = await fetch(`${STREAM_API_URL}/${chainId}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: input })
+  });
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+
+  let botText = "";
+  setMessages(prev => [...prev, { from: "bot", text: "" }]);
+
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+
+    botText += decoder.decode(value, { stream: true });
+
+    setMessages(prev => {
+      const copy = [...prev];
+      copy[copy.length - 1] = { from: "bot", text: botText };
+      sessionStorage.setItem("chat_history", JSON.stringify(copy));
+      return copy;
     });
+  }
+};
 
-    const botMsg = { from: "bot", text: res.data.response || "Sorry, I couldn't understand that." };
-    const finalChat = [...updated, botMsg];
-    setMessages(finalChat);
-    sessionStorage.setItem("chat_history", JSON.stringify(finalChat));
-  };
 
   return (
     <>
